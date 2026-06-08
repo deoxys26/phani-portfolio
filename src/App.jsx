@@ -1,30 +1,51 @@
 import { useState } from "react";
 
 const projects = [
-  {
-    title: "LexIntel",
-    subtitle: "Source-Grounded Legal Document RAG Platform",
-    category: "GenAI / RAG / Document Intelligence",
-    description:
-      "A full-stack legal document intelligence platform where users upload PDFs, ask questions, and receive source-grounded answers with filename, page number, retrieved source text, chunk index, and similarity score.",
-    tech: [
-      "React",
-      "FastAPI",
-      "Qdrant",
-      "Gemini",
-      "RAG",
-      "Embeddings",
-      "PDF Parsing",
-    ],
-    github: "https://github.com/deoxys26/lexintel",
-    caseStudy: "https://github.com/deoxys26/lexintel/tree/main/Phase_1_Changes",
-    strength: "Best Project",
-    highlights: [
-      "Improved basic PDF chatbot into source-grounded RAG system",
-      "Added page-level citations and similarity scores",
-      "Debugged Qdrant URL, upload-indexing, port, and frontend API issues",
-    ],
-  },
+ {
+  title: "LexIntel",
+  subtitle: "Legal Document RAG Platform",
+  category: "GenAI / RAG",
+  description:
+    "A full-stack legal document analysis platform where users can upload PDFs, ask questions, and receive source-grounded answers with filename and page references. The stable version uses React, FastAPI, Gemini API, and Qdrant for RAG-based document question answering. The Phase 2 upgrade adds parent-child sliding window chunking, richer Qdrant metadata, and cross-encoder re-ranking for better retrieval quality.",
+  tech: [
+    "React",
+    "FastAPI",
+    "Qdrant",
+    "Gemini API",
+    "RAG",
+    "Sentence Transformers",
+    "Cross-Encoder Re-ranking"
+  ],
+  highlights: [
+    "Built PDF upload and page-wise text extraction pipeline",
+    "Implemented RAG-based legal document question answering",
+    "Used Qdrant for semantic vector search and source retrieval",
+    "Returned grounded answers with filename and page number references",
+    "Added Phase 2 parent-child sliding window chunking",
+    "Integrated cross-encoder re-ranking in a separate advanced branch"
+  ],
+  github: "https://github.com/deoxys26/lexintel",
+  advancedBranch: "https://github.com/deoxys26/lexintel/tree/lexintel-3-rag-upgrade",
+  live: "",
+  links: [
+    {
+      label: "Stable Version",
+      url: "https://github.com/deoxys26/lexintel"
+    },
+    {
+      label: "Phase 2 Advanced RAG Branch",
+      url: "https://github.com/deoxys26/lexintel/tree/lexintel-3-rag-upgrade"
+    },
+    {
+      label: "Phase 1 Changes",
+      url: "https://github.com/deoxys26/lexintel/blob/main/docs/Phase_1_Changes.md"
+    },
+    {
+      label: "Phase 2 Changes",
+      url: "https://github.com/deoxys26/lexintel/tree/lexintel-3-rag-upgrade/Phase_2_Changes"
+    }
+  ]
+},
   {
     title: "Product Review Sentiment Analysis",
     subtitle: "NLP Review Intelligence App",
@@ -376,27 +397,27 @@ function Projects() {
               ))}
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-4">
+                      <div className="mt-4 flex flex-wrap gap-4">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="font-bold text-slate-900 hover:text-slate-600"
+            >
+              View GitHub →
+            </a>
+
+            {project.advancedBranch && (
               <a
-                href={project.github}
+                href={project.advancedBranch}
                 target="_blank"
                 rel="noreferrer"
                 className="font-bold text-slate-900 hover:text-slate-600"
               >
-                View GitHub →
+                Phase 2 Branch →
               </a>
-
-              {project.caseStudy && (
-                <a
-                  href={project.caseStudy}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-bold text-slate-600 hover:text-slate-950"
-                >
-                  View Case Study →
-                </a>
-              )}
-            </div>
+            )}
+          </div>
           </article>
         ))}
       </div>
